@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Countdown</title>
+  </head>
+  <body>
+    <div class="countdown">
+      <div class="cont">
+        <div class="hari">00</div>
+        <p>Hari</p>
+      </div>
+      <div class="cont">
+        <div class="jam">00</div>
+        <p>Jam</p>
+      </div>
+      <div class="cont">
+        <div class="menit">00</div>
+        <p>Menit</p>
+      </div>
+      <div class="cont">
+        <div class="detik">00</div>
+        <p>Detik</p>
+      </div>
+    </div>
+
+    <script>
+      let teksHari = document.querySelector(".hari");
+      let teksJam = document.querySelector(".jam");
+      let teksMenit = document.querySelector(".menit");
+      let teksDetik = document.querySelector(".detik");
+
+      let target = new Date("december 25, 2024 12:00:00").getTime();
+
+      let x = setInterval(function () {
+        let sekarang = new Date().getTime();
+
+        let jarakWaktu = target - sekarang;
+
+        let hari = Math.floor(jarakWaktu / (1000 * 60 * 60 * 24));
+        let jam = Math.floor(
+          (jarakWaktu % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        let menit = Math.floor((jarakWaktu % (1000 * 60 * 60)) / (1000 * 60));
+        let detik = Math.floor((jarakWaktu % (1000 * 60)) / 1000);
+
+        teksHari.innerHTML = hari;
+        teksJam.innerHTML = jam;
+        teksMenit.innerHTML = menit;
+        teksDetik.innerHTML = detik;
+      }, 1000);
+    </script>
+  </body>
+</html>
